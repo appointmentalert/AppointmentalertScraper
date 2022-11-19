@@ -51,6 +51,24 @@ def retrieve_kfzzulassung():
     return data
 
 
+def retrieve_reisegewerbe():
+    browser = Browser(driver_name='chrome')
+    browser.visit('https://www.leipzig.de/fachanwendungen/termine/index.html')
+    browser.driver.switch_to.frame(0)
+
+    browser.find_by_name('AGREEMENT_ACCEPT').click()
+    browser.find_by_name('ACTION_INFOPAGE_NEXT').click()
+    browser.find_by_xpath('//*[@id="id_buergerauswahldienststelle_tree-office"]/tbody/tr[8]/td[2]/div/button').click()
+    browser.find_by_id("action_officeselect_termnew_prefix1595996623129").click()
+    browser.find_by_id("id_1595996623151").find_by_xpath("//option[. = '1']").click()
+    browser.find_by_name("ACTION_CONCERNSELECT_NEXT").click()
+    browser.find_by_name("ACTION_CONCERNCOMMENTS_NEXT").click()
+
+    data = excerpt_data(browser.find_by_css('table[class=ekolCalendarMonthTable]'))
+    browser.quit()
+    return data
+
+
 def retrieve_aufenthaltstitel():
     browser = Browser(driver_name='chrome')
     browser.visit('https://www.leipzig.de/fachanwendungen/termine/abholung-aufenthaltstitel.html')
@@ -80,3 +98,4 @@ def post_free_slots(title, data):
 if __name__ == '__main__':
     post_free_slots('aufenthaltstitel', retrieve_aufenthaltstitel())
     post_free_slots('kfz_zulassung', retrieve_kfzzulassung())
+    post_free_slots('reisegewerbe', retrieve_reisegewerbe())
