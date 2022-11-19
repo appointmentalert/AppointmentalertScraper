@@ -90,6 +90,26 @@ def retrieve_pflichtumtausch(browser):
     browser.find_by_id('id_1563449415908').find_by_xpath("//option[. = '1']").click()  # select dropdown
 
 
+@all_time_clicking_wrapper
+def retrieve_fahrerlaubnisangelegenheiten(browser):
+    browser.find_by_xpath('//*[@id="id_buergerauswahldienststelle_tree-office"]/tbody/tr[5]/td[2]/div/button').click()  # expand option list
+    browser.find_by_id('action_officeselect_termnew_prefix1586953390193').click()  # click button
+    browser.find_by_id('id_1586953390210').find_by_xpath("//option[. = '1']").click()  # select dropdown
+
+
+@all_time_clicking_wrapper
+def retrieve_gewerbebehoerde(browser):
+    browser.find_by_xpath('//*[@id="id_buergerauswahldienststelle_tree-office"]/tbody/tr[6]/td[2]/div/button').click()  # expand option list
+    browser.find_by_id('action_officeselect_termnew_prefix1373375283').click()  # click button
+    browser.find_by_id('id_1560944759741').find_by_xpath("//option[. = '1']").click()  # select dropdown
+
+
+@all_time_clicking_wrapper
+def retrieve_erlaubnispflichtiges_gewerbe(browser):
+    browser.find_by_xpath('//*[@id="id_buergerauswahldienststelle_tree-office"]/tbody/tr[7]/td[2]/div/button').click()  # expand option list
+    browser.find_by_id('action_officeselect_termnew_prefix1595996515007').click()  # click button
+    browser.find_by_id('id_1595996515028').find_by_xpath("//option[. = '1']").click()  # select dropdown
+
 
 @all_time_clicking_wrapper
 def retrieve_TEMPLATE(browser):
@@ -121,6 +141,9 @@ if __name__ == '__main__':
              (retrieve_reisegewerbe, url1, 'reisegewerbe'),
              (retrieve_fundbuero, url1, 'fundbüro'),
              (retrieve_pflichtumtausch, url1, 'pflichtumtausch_führerschein'),
+             (retrieve_fahrerlaubnisangelegenheiten, url1, 'fahrerlaubnisangelegenheiten'),
+             (retrieve_gewerbebehoerde, url1, 'gewerbebehörde'),
+             (retrieve_erlaubnispflichtiges_gewerbe, url1, 'erlaubnispflichtiges_gewerbe'),
              (retrieve_aufenthaltstitel, url2, 'aufenthaltstitel')]
 
     browser = Browser(driver_name='chrome')
