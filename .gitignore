@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# selenium logs
+geckodriver.log
+
+# Local files
+trials.py
