@@ -146,6 +146,10 @@ if __name__ == '__main__':
              (retrieve_erlaubnispflichtiges_gewerbe, url1, 'erlaubnispflichtiges_gewerbe'),
              (retrieve_aufenthaltstitel, url2, 'aufenthaltstitel')]
 
-    browser = Browser(driver_name='chrome')
+    browser = Browser(driver_name='remote',
+                      browser='Chrome',
+                      command_executor='http://standalone-chrome:4444',
+                      keep_alive=True
+                      )
     post_free_slots(retrieve_all(browser, todos))
-    browser.quit()
+    #browser.quit()
