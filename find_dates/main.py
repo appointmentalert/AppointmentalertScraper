@@ -2,34 +2,34 @@ from splinter import Browser
 import urllib3
 import json
 
-MONTHS = dict(Januar=1,
-              Februar=2,
-              März=3,
-              April=4,
-              Mai=5,
-              Juni=6,
-              Juli=7,
-              August=8,
-              September=9,
-              Oktober=10,
-              November=11,
-              Dezember=12)
+MONTHS = dict(Januar='01',
+              Februar='02',
+              März='03',
+              April='04',
+              Mai='05',
+              Juni='06',
+              Juli='07',
+              August='08',
+              September='09',
+              Oktober='10',
+              November='11',
+              Dezember='12')
 
 
 def excerpt_data(tables: list):
-    all_free_slots = dict()
+    all_free_slots = list()
     for table in tables:
-        month = MONTHS[table.text.split('\n')[0].split(' ')[0]]
+        month, year = table.text.split('\n')[0].split(' ')
+        month = MONTHS[month]
         buttons = table.find_by_tag('button')
-        monthly_free_slots = []
+
         for button in buttons:
-            date, free = button.text.split('\n')
+            day, free = button.text.split('\n')
+            day = '0'+day if len(day) == 1 else day
             free = int(free.removesuffix(' frei'))
             if free:
-                monthly_free_slots.append((int(date), free))
+                all_free_slots.append(f'{year}-{month}-{day}')
 
-        if monthly_free_slots:
-            all_free_slots.update({int(month): monthly_free_slots})
     return all_free_slots
 
 
@@ -49,7 +49,7 @@ def all_time_clicking_wrapper(special_clicking_func):
             optional.click()
         data = excerpt_data(browser.find_by_css('table[class=ekolCalendarMonthTable]'))
 
-        return {tag: data}
+        return dict(type=tag, appointments=data)
 
     return wrapper
 
@@ -119,11 +119,11 @@ def retrieve_TEMPLATE(browser):
 
 
 def retrieve_all(browser, todos):
-    all_data = {}
+    all_data = []
     for todo in todos:
         func, url, tag = todo[0], todo[1], todo[2]
-        all_data.update(func(browser, url, tag))
-    return all_data
+        all_data.append(func(browser, url, tag))
+    return {'appointmentListUpdates':all_data}
 
 
 def post_free_slots(data):
@@ -150,6 +150,7 @@ if __name__ == '__main__':
                       browser='Chrome',
                       command_executor='http://standalone-chrome:4444',
                       keep_alive=True
-                      )
+        )
+    #browser = Browser(driver_name='chrome')
     post_free_slots(retrieve_all(browser, todos))
     #browser.quit()
