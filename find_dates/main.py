@@ -137,14 +137,14 @@ def post_free_slots(data):
 if __name__ == '__main__':
     url1 = 'https://www.leipzig.de/fachanwendungen/termine/index.html'
     url2 = 'https://www.leipzig.de/fachanwendungen/termine/abholung-aufenthaltstitel.html'
-    todos = [(retrieve_kfzzulassung, url1, 'kfz_zulassung'),
-             (retrieve_reisegewerbe, url1, 'reisegewerbe'),
-             (retrieve_fundbuero, url1, 'fundbüro'),
-             (retrieve_pflichtumtausch, url1, 'pflichtumtausch_führerschein'),
-             (retrieve_fahrerlaubnisangelegenheiten, url1, 'fahrerlaubnisangelegenheiten'),
-             (retrieve_gewerbebehoerde, url1, 'gewerbebehörde'),
-             (retrieve_erlaubnispflichtiges_gewerbe, url1, 'erlaubnispflichtiges_gewerbe'),
-             (retrieve_aufenthaltstitel, url2, 'aufenthaltstitel')]
+    todos = [(retrieve_kfzzulassung, url1, 'LEIPZIG_CAR_REGISTRATION_PICKUP'),
+             (retrieve_reisegewerbe, url1, 'LEIPZIG_TRAVEL_INDUSTRY_PICKUP'),
+             (retrieve_fundbuero, url1, 'LEIPZIG_LAOST_AND_FOUND_OFFICE'),
+             (retrieve_pflichtumtausch, url1, 'LEIPZIG_EXCHANGE_DRIVING_LICENSE'),
+             (retrieve_fahrerlaubnisangelegenheiten, url1, 'LEIPZIG_DRIVER_LICENSE_MATTERS'),
+             (retrieve_gewerbebehoerde, url1, 'LEIPZIG_TRADE_AUTHORITY'),
+             (retrieve_erlaubnispflichtiges_gewerbe, url1, 'LEIPZIG_TRADE_PERMISSION_PICKUP'),
+             (retrieve_aufenthaltstitel, url2, 'LEIPZIG_RESIDENCE_PERMIT_PICKUP')]
 
     browser = Browser(driver_name='remote',
                       browser='Chrome',
