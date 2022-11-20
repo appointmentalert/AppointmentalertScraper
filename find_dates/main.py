@@ -148,9 +148,9 @@ if __name__ == '__main__':
 
     browser = Browser(driver_name='remote',
                       browser='Chrome',
-                      command_executor='http://standalone-chrome:4444',
-                      keep_alive=True
-        )
+                      command_executor='http://standalone-chrome:4444'
+                      )
     #browser = Browser(driver_name='chrome')
+
     post_free_slots(retrieve_all(browser, todos))
-    #browser.quit()
+    browser.quit()
