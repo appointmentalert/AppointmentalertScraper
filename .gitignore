@@ -133,3 +133,5 @@ geckodriver.log
 
 # Local files
 trials.py
+
+.idea

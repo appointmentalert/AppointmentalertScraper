@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  appointmentalert-permit-scraper:
+    build: .
+    platform: linux/amd64
+  standalone-chrome:
+    image: selenium/standalone-chrome
+    ports:
+      - "4444:4444"

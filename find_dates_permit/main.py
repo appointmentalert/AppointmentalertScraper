@@ -10,8 +10,10 @@ def get_available_days():
     Get the available days for the appointment.
     """
 
-    driver = webdriver.Chrome() # webdriver.Chrome() webdriver.Firefox()
-    # driver.maximize_window()
+    options = webdriver.ChromeOptions()
+    driver = webdriver.Remote("http://standalone-chrome:4444", options)
+
+    print("Connected")
 
     driver.get("https://www.leipzig.de/fachanwendungen/termine/abholung-aufenthaltstitel.html")
 
@@ -86,5 +88,5 @@ def get_available_days():
     availabeDays = df[mask]['yyyy-mm-dd'].tolist()
     return availabeDays
 
-if __name__ == '__main__':
-    get_available_days()
+print("Starting")
+print(get_available_days())
