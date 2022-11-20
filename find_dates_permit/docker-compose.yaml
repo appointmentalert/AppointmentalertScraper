@@ -4,6 +4,6 @@ services:
     build: .
     platform: linux/amd64
   standalone-chrome:
-    image: selenium/standalone-chrome
+    image: selenium/standalone-chrome:4
     ports:
       - "4444:4444"

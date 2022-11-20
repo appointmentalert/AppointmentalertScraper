@@ -1,2 +1,2 @@
-splinter
+splinter[selenium4]
 urllib3
