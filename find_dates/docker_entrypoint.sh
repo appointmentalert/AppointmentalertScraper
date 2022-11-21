@@ -1,10 +1,10 @@
 #!/bin/bash
 
 echo "starting container"
-sleep 40
 
 while true; do
-  echo "running loop"
-  python main.py
+  echo "waiting 60 seconds"
   sleep 60
+  echo "running scraper"
+  python main.py
 done
