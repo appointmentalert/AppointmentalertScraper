@@ -127,10 +127,13 @@ def retrieve_all(browser, todos):
 
 
 def post_free_slots(data):
+    body = json.dumps(data)
+    print(body)
+
     http = urllib3.PoolManager()
-    http.urlopen('POST', 'http://localhost:8080/assets',
+    http.urlopen('POST', 'http://backend/appointments',
                  headers={'Content-Type': 'application/json'},
-                 body=json.dumps(data)
+                 body=body
                  )
 
 
