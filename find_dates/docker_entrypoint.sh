@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "starting container"
-sleep 30
+sleep 40
 
 while true; do
   echo "running loop"
