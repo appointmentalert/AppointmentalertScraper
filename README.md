@@ -1,1 +1,1 @@
-# ScraperABHLeipzig
+# Appointment scraper for a bunch of Public Institutions in Leipzig
