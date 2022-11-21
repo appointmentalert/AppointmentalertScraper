@@ -139,7 +139,7 @@ if __name__ == '__main__':
     url2 = 'https://www.leipzig.de/fachanwendungen/termine/abholung-aufenthaltstitel.html'
     todos = [(retrieve_kfzzulassung, url1, 'LEIPZIG_CAR_REGISTRATION_PICKUP'),
              (retrieve_reisegewerbe, url1, 'LEIPZIG_TRAVEL_INDUSTRY_PICKUP'),
-             (retrieve_fundbuero, url1, 'LEIPZIG_LAOST_AND_FOUND_OFFICE'),
+             (retrieve_fundbuero, url1, 'LEIPZIG_LOST_AND_FOUND_OFFICE'),
              (retrieve_pflichtumtausch, url1, 'LEIPZIG_EXCHANGE_DRIVING_LICENSE'),
              (retrieve_fahrerlaubnisangelegenheiten, url1, 'LEIPZIG_DRIVER_LICENSE_MATTERS'),
              (retrieve_gewerbebehoerde, url1, 'LEIPZIG_TRADE_AUTHORITY'),
