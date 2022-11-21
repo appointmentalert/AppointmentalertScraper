@@ -148,7 +148,7 @@ if __name__ == '__main__':
 
     browser = Browser(driver_name='remote',
                       browser='Chrome',
-                      command_executor='http://standalone-chrome:4444'
+                      command_executor='http://127.0.0.1:4444'
                       )
     #browser = Browser(driver_name='chrome')
 
